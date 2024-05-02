@@ -13,7 +13,7 @@ namespace PDDGB7_HFT_2023242.Repository.Interfaces
         T Read(int id);
         void Create(T item);
         void Update(T item);
-        void Delete(T item);
+        void Delete(int id);
         
     }
 }

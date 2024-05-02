@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace PDDGB7_HFT_2023242.Models
 {
-    public class Entity : IEntity<int>
+    public abstract class Entity : IEntity<int>
     {
-        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
     }
 }
