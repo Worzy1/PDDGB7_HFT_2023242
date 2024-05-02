@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace PDDGB7_HFT_2023242.Models
         public override int Id { get; set; }
         public virtual Developer Developer { get; set; }
         public int DeveloperId { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Title { get; set; }
         public virtual ICollection<RentLog> RentLogs { get; set; }
         public DateTime YearOfRelease { get; set; }
