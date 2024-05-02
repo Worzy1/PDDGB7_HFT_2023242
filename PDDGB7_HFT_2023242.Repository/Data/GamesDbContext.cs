@@ -113,7 +113,26 @@ namespace PDDGB7_HFT_2023242.Repository.Data
             });
             modelBuilder.Entity<RentLog>().HasData(new RentLog[]
             {
-                new RentLog
+                new RentLog("1#1#1#2023*05*23"),
+                new RentLog("2#2#2#2023*04*22"),
+                new RentLog("3#3#3#2023*05*27"),
+                new RentLog("4#4#4#2024*01*10"),
+                new RentLog("5#5#5#2024*02*11"),
+                new RentLog("6#6#6#2024*03*05"),
+                new RentLog("7#7#7#2023*09*02"),
+                new RentLog("8#8#8#2023*11*30"),
+                new RentLog("9#9#9#2023*05*22"),
+                new RentLog("10#10#10#2024*01*18"),
+                new RentLog("11#11#11#2024*02*17"),
+                new RentLog("12#12#12#2024*04*26"),
+                new RentLog("13#13#13#2023*12*02"),
+                new RentLog("14#14#14#2023*12*01"),
+                new RentLog("15#15#15#2023*10*13"),
+                new RentLog("16#1#16#2023*08*17"),
+                new RentLog("17#2#17#2023*06*15"),
+                new RentLog("18#3#18#2023*07*26"),
+                new RentLog("19#4#19#2024*03*20"),
+                new RentLog("20#5#20#2024*04*29")
             });
         }
 
