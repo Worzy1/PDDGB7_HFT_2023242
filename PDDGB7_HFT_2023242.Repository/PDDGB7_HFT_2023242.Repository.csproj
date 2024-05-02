@@ -4,7 +4,15 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.17" />
+	</ItemGroup>
+
+	<ItemGroup>
     <ProjectReference Include="..\PDDGB7_HFT_2023242.Models\PDDGB7_HFT_2023242.Models.csproj" />
   </ItemGroup>
 
