@@ -59,44 +59,62 @@ namespace PDDGB7_HFT_2023242.Repository.Data
             modelBuilder.Entity<Game>().HasData(new Game[]
             {
                 new Game("1#1#Borderlands#2009*10*20"),
-                new Game("2#1#Borderlands2#2012*09*18"),
-                new Game("3#1#Borderlands3#2019*09*13"),
-                new Game("4#2#Diablo2#2000*06*28"),
-                new Game("5#2#Diablo3#2012*05*15"),
-                new Game("6#2#Diablo4#2023*06*5"),
+                new Game("2#1#Borderlands 2#2012*09*18"),
+                new Game("3#1#Borderlands 3#2019*09*13"),
+                new Game("4#2#Diablo 2#2000*06*28"),
+                new Game("5#2#Diablo 3#2012*05*15"),
+                new Game("6#2#Diablo 4#2023*06*5"),
                 new Game("7#3#Minecraft#2011*11*18"),
                 new Game("8#4#Warframe#2013*03*25"),
-                new Game("9#5#StardewValley#2016*02*26"),
+                new Game("9#5#Stardew Valley#2016*02*26"),
                 new Game("10#6#CSGO#2012*08*21"),
                 new Game("11#6#HalfLife#1998*11*19"),
-                new Game("12#6#HalfLife2#2004*11*16"),
-                new Game("13#1#FarCry5#2018*03*27"),
-                new Game("14#7#FarCry6#2021*10*07"),
-                new Game("15#7#RainbowSixSiege#2015*12*01"),
-                new Game("16#8#ApexLegends#2019*02*04"),
-                new Game("17#9#LeagueOfLegends#2009*10*27"),
+                new Game("12#6#HalfLife 2#2004*11*16"),
+                new Game("13#1#FarCry 5#2018*03*27"),
+                new Game("14#7#FarCry 6#2021*10*07"),
+                new Game("15#7#Rainbow Six Siege#2015*12*01"),
+                new Game("16#8#Apex Legends#2019*02*04"),
+                new Game("17#9#League Of Legends#2009*10*27"),
                 new Game("18#2#Hearthstone#2014*03*11"),
                 new Game("19#10#Skyrim#2011*11*11"),
-                new Game("20#10#Fallout4#2015*11*10"),
+                new Game("20#10#Fallout 4#2015*11*10")
                
-            });;
+            });
             modelBuilder.Entity<Developer>().HasData(new Developer[]
             {
-                new Developer("1#Gearbox"),
+                new Developer("1#Gearbox Software"),
                 new Developer("2#Blizzard"),
                 new Developer("3#Mojang"),
-                new Developer("4#DigitalExtremes"),
+                new Developer("4#Digital Extremes"),
                 new Developer("5#ConcernedApe"),
-                new Developer("6#Valve"),
+                new Developer("6#Valve Software"),
                 new Developer("7#Ubisoft"),
-                new Developer("8#RespawnEntertainment"),
-                new Developer("9#RiotGames"),
-                new Developer("10#Bethesda"),   
-            }); ;
+                new Developer("8#Respawn Entertainment"),
+                new Developer("9#Riot Games"),
+                new Developer("10#Bethesda Game Studios")  
+            }); 
             modelBuilder.Entity<User>().HasData(new User[]
             {
-                new User()
-            }); ;
+                new User("1#Vasas Lajos#ABC12"),
+                new User("2#Deák Imre#ASD51"),
+                new User("3#Kis Norbert#LKJ65"),
+                new User("4#Nagy Balázs#583JT"),
+                new User("5#Lakatos Arnold#LFG66"),
+                new User("6#Fekete István#OKJ12"),
+                new User("7#Fehér Gizella#NIK99"),
+                new User("8#Kovács Ádám#PROG1"),
+                new User("9#Hajós Réka#QWE11"),
+                new User("10#Antal Áron#1G5W3"),
+                new User("11#Nagy Beáta#HGT23"),
+                new User("12#Molnár Attila#KLK78"),
+                new User("13#Szilágyi János#OE4EV"),
+                new User("14#Farkas Petra#LOP51"),
+                new User("15#Varga Sándor#87GJ3")
+            });
+            modelBuilder.Entity<RentLog>().HasData(new RentLog[]
+            {
+                new RentLog
+            });
         }
 
 

@@ -13,6 +13,9 @@ namespace PDDGB7_HFT_2023242.Models
         [StringLength(100)]
         [Required]
         public string Name { get; set; }
+        [Required]
+        [StringLength (5)]
+        public string RefCode { get; set; }
         
         public virtual ICollection<RentLog> RentLogs { get; set; }
         public User ()
@@ -25,7 +28,7 @@ namespace PDDGB7_HFT_2023242.Models
             string[] split = line.Split('#');
             Id = int.Parse(split[0]);
             Name = split[1];
-
+            RefCode = split[2]; 
         }
 
      }
