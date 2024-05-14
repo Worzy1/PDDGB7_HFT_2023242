@@ -51,7 +51,6 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
         {
             repo.Update(item);
         }
-
         
 
         public int NumberOfGamesByDeveloper(string developerName)

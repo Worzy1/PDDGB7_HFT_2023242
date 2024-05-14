@@ -31,7 +31,7 @@ namespace PDDGB7_HFT_2023242.Models
             Id = int.Parse(split[0]);
             DeveloperId = int.Parse(split[1]);
             Title = split[2];
-            YearOfRelease = DateTime.Parse(split[3].Replace('*','.'));
+            YearOfRelease = DateTime.Parse(split[3].Replace('*', '.'));
         }
 
         public override string ToString()

@@ -125,7 +125,7 @@ namespace PDDGB7_HFT_2023242
         public string GetFavouriteDeveloper(string refCode)
         {
             string item = default(string);
-            HttpResponseMessage response = client.GetAsync("User/GetMostLikedDeveloper/" + refCode).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync("User/mostLikedDeveloperOf/" + refCode).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 item = response.Content.ReadAsAsync<string>().GetAwaiter().GetResult();
@@ -140,7 +140,7 @@ namespace PDDGB7_HFT_2023242
         public double GetAllUsersAverageNumberOfRents()
         {
             double avg = default(double);
-            HttpResponseMessage response = client.GetAsync("User/GetAllUsersAverageNumberOfRents/").GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync("User/averageNumOfRents/").GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 avg = response.Content.ReadAsAsync<double>().GetAwaiter().GetResult();
@@ -171,7 +171,7 @@ namespace PDDGB7_HFT_2023242
         public string GetTheBusiestYearsMostPlayedGame()
         {
             string item = default(string);
-            HttpResponseMessage response = client.GetAsync("RentLog/TheBusiestYearsMostPlayedGame/").GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync("RentLog/BusiestYearsMostPlayedGame/").GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 item = response.Content.ReadAsAsync<string>().GetAwaiter().GetResult();

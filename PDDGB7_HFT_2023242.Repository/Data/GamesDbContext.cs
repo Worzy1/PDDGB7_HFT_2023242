@@ -35,21 +35,25 @@ namespace PDDGB7_HFT_2023242.Repository.Data
                 .WithOne(game => game.Developer)
                 .HasForeignKey(game => game.DeveloperId)
                 .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Game>()
                 .HasOne(game => game.Developer)
                 .WithMany(developer => developer.Games)
                 .HasForeignKey(game => game.DeveloperId)
                 .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<User>()
                 .HasMany(user => user.RentLogs)
                 .WithOne(log => log.User)
                 .HasForeignKey(user => user.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<RentLog>()
                 .HasOne(log => log.Game)
                 .WithMany(game => game.RentLogs)
                 .HasForeignKey(log => log.GameId)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<RentLog>()
                 .HasOne(log => log.User)
                 .WithMany(user => user.RentLogs)
