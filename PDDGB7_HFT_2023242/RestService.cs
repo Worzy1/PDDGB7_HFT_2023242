@@ -168,6 +168,21 @@ namespace PDDGB7_HFT_2023242
             return item;
 
         }
+        public string GetTheBusiestYearsMostPlayedGame()
+        {
+            string item = default(string);
+            HttpResponseMessage response = client.GetAsync("RentLog/TheBusiestYearsMostPlayedGame/").GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                item = response.Content.ReadAsAsync<string>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return item;
+        }
         public string NumberOfDevelopersGamesRentedAtDate(string developerName, string date)
         {
             string item = default(string);

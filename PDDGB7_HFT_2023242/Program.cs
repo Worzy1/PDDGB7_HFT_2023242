@@ -128,6 +128,38 @@ namespace PDDGB7_HFT_2023242
             int id = int.Parse(Console.ReadLine());
             rest.Delete(id, entityType);
         }
+        //static void GetAllUsersAverageNumberOfRents
+
+        static void AllUsersAvgNumOfRents()
+        {
+            Console.WriteLine($"The average number of rents/user is {rest.GetAllUsersAverageNumberOfRents()}");
+            Console.ReadLine();
+        }
+
+        static void FavouriteDeveloper()
+        {
+            Console.WriteLine("User's Refcode id: ");
+            string refcode = Console.ReadLine();
+            try
+            {
+                Console.WriteLine(rest.GetFavouriteDeveloper(refcode)+$"is {refcode}'s favourite developer");
+            }
+            catch(Exception  ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.ReadLine();
+        }
+        static void TheMostPlayedGame()
+        {
+            Console.WriteLine($"The most played game is: {rest.GetMostPlayedGame()}");
+            Console.ReadLine();
+        }
+        static void TheMostPlayedGameDuringBusiestYear()
+        {
+            Console.WriteLine($"The most played game during the busiest year is: {rest.GetTheBusiestYearsMostPlayedGame()}");
+            Console.ReadLine();
+        }
 
 
         static void Main(string[] args)
