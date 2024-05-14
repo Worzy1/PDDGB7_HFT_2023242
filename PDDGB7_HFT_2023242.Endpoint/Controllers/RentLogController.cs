@@ -58,7 +58,9 @@ namespace PDDGB7_HFT_2023242.Endpoint.Controllers
         public int BusiestYear() => this.logic.BusiestYear();
         [HttpGet("BusiestMonth/")]
         public int BusiestMonth() => this.logic.BusiestMonth();
-        
+        [HttpGet("BusiestYearsMostPlayedGame/")]
+        public string BusiestYearsMostPlayedGame() => this.logic.TheBusiestYearsMostPlayedGame();
+
         [HttpGet("NumberOfDevelopersGamesRentedAtDate/{developerName}/{date}")]
         public int NumberOfDevelopersGamesRentedAtDate(string developerName, string date)
         {

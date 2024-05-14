@@ -21,7 +21,7 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
 
         public void Create(Developer item)
         {
-            if (item.Name == null)
+            if (item.Name.Equals(""))
             {
                 throw new ArgumentNullException("No developer name");
             }

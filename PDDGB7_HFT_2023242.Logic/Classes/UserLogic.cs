@@ -26,6 +26,10 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
             {
                 throw new ArgumentException("Not full name");
             }
+            if (item.RefCode.Equals(""))
+            {
+                throw new ArgumentException("No refcode given");
+            }
             repo.Create(item);
         }
 

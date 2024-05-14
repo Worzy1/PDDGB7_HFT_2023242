@@ -19,6 +19,8 @@ namespace PDDGB7_HFT_2023242.Logic.Interfaces
         public string MostPlayedGame();
         public int NumberOfDevelopersGamesRentedAtDate(string developerName, DateTime date);
 
+        public string TheBusiestYearsMostPlayedGame();
+
 
 
     }

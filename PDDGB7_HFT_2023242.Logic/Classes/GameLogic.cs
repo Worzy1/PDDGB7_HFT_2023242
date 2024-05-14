@@ -21,7 +21,7 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
 
         public void Create(Game item)
         {
-            if (item.Title==null)
+            if (item.Title.Equals(""))
             {
                 throw new ArgumentException("No game title");
             }

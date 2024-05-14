@@ -62,6 +62,11 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
             return MostPlayedGameHelper(repo.ReadAll().ToList());
         }
 
+        public string TheBusiestYearsMostPlayedGame()
+        {
+            return MostPlayedGameHelper(repo.ReadAll().Where(log => log.DateOfRent.Year == BusiestYear()).ToList());
+        }
+
        
         public int BusiestYear()
         {

@@ -122,6 +122,12 @@ namespace PDDGB7_HFT_2023242
             rest.Put(entity, entityType);
 
         }
+        static void Delete(string entityType)
+        {
+            Console.Write($"Enter {entityType}'s id to delete: ");
+            int id = int.Parse(Console.ReadLine());
+            rest.Delete(id, entityType);
+        }
 
 
         static void Main(string[] args)

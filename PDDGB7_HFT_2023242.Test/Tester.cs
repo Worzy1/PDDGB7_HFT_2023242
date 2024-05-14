@@ -96,6 +96,13 @@ namespace PDDGB7_HFT_2023242.Test
                 Assert.That(gamelogic.NumberOfGamesByDeveloper("Gearbox Software") == 3);
             }
             [Test]
+            public void RentLogMostPlayedGameBusiestYearTest()
+            {
+                Assert.That(rentlogLogic.TheBusiestYearsMostPlayedGame() == "Borderlands 2");
+            }
+
+
+            [Test]
             public void CreateGameTestWithCorrectTitle()
             {
                 var game = new Game("1#1#Coolest Game Ever#2024*05*14");
@@ -106,7 +113,7 @@ namespace PDDGB7_HFT_2023242.Test
             [Test]
             public void CreateGameTestWithInCorrectTitle()
             {
-                var game = new Game("1#1##2007*08*10");
+                var game = new Game("1#1##2009*10*20");
                 try
                 {
                     gamelogic.Create(game);
@@ -115,7 +122,47 @@ namespace PDDGB7_HFT_2023242.Test
                 { }
                 mockGameRepo.Verify(r => r.Create(game), Times.Never);
             }
-           
+            [Test]
+            public void CreateUserTestWithInCorrectName()
+            {
+                var user = new User("1#Lajcsi#CBA12");
+                try
+                {
+                    userLogic.Create(user);
+                }
+                catch
+                { }
+                mockUserRepo.Verify(r => r.Create(user), Times.Never);
+            }
+            [Test]
+
+            public void ReadUserTestWithInCorrectName()
+            {
+                var correctExceptionThrown = false;
+                try
+                {
+                    userLogic.Read(9999);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message == "Can't read entry that does not exist")
+                        correctExceptionThrown = true;
+                }
+                Assert.IsTrue(correctExceptionThrown);
+            }
+
+            [Test]
+            public void CreateUserTestWithInCorrectRefCode()
+            {
+                var user = new User("1#Szabó István#");
+                try
+                {
+                    userLogic.Create(user);
+                }
+                catch
+                { }
+                mockUserRepo.Verify(r => r.Create(user), Times.Never);
+            }
 
 
 
