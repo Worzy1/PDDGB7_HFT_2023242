@@ -51,6 +51,9 @@ namespace PDDGB7_HFT_2023242.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this.logic.Delete(id);
         }
+        [HttpGet("NumberOfGamesByDeveloper/{name}")]
+        public int NumberOfGamesByDeveloper(string name) => this.logic.NumberOfGamesByDeveloper(name);
     }
 }
