@@ -1,3 +1,4 @@
+using LibGit2Sharp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PDDGB7_HFT_2023242.Logic.Classes;
+using PDDGB7_HFT_2023242.Logic.Interfaces;
+using PDDGB7_HFT_2023242.Models;
+using PDDGB7_HFT_2023242.Repository.Data;
+using PDDGB7_HFT_2023242.Repository.Interfaces;
+using PDDGB7_HFT_2023242.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +32,18 @@ namespace PDDGB7_HFT_2023242.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<GamesDbContext>();
+
+            services.AddTransient<IRepository<Developer>, DeveloperRepository>();
+            services.AddTransient<IRepository<Game>, GameRepository>();
+            services.AddTransient<IRepository<RentLog>, RentLogRepository>();
+            services.AddTransient<IRepository<User>, UserRepository>();
+
+            services.AddTransient<IDeveloperLogic, DeveloperLogic>();
+            services.AddTransient<IGameLogic, GameLogic>();
+            services.AddTransient<IRentLogLogic, RentLogLogic>();
+            services.AddTransient<IUserLogic, UserLogic>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
