@@ -47,7 +47,7 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
         {
             repo.Update(item);
         }
-        public string MostPlayedGame(List<RentLog> logs)
+        public string MostPlayedGameHelper(List<RentLog> logs)
         {
             return logs
                 .GroupBy(log => log.Game.Title)
@@ -57,22 +57,36 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
                 .Select(log => log.Key)
                 .FirstOrDefault();
         }
-        public string MostPlayedGameAllTime()
+        public string MostPlayedGame()
         {
-            return MostPlayedGame(repo.ReadAll().ToList());
+            return MostPlayedGameHelper(repo.ReadAll().ToList());
         }
 
-        public int NumberOfDevelopersGamesRentedAtDate(string developerName, DateTime date)
-        {
-            throw new NotImplementedException();
-        }
+       
         public int BusiestYear()
         {
-            throw new NotImplementedException();
+           return repo.ReadAll().ToList()
+                .GroupBy(i=>i.DateOfRent.Year)
+                .GroupBy(g=> g.Count())
+                .OrderByDescending(g=>g.Key)
+                .First()
+                .Select (log => log.Key)
+                .FirstOrDefault();
         }
         public int BusiestMonth()
         {
-            throw new NotImplementedException();
+            return repo.ReadAll().ToList()
+                .GroupBy(i => i.DateOfRent.Month)
+                .GroupBy(g => g.Count())
+                .OrderByDescending(g => g.Key)
+                .First()
+                .Select(log => log.Key)
+                .FirstOrDefault();
+        }
+        public int NumberOfDevelopersGamesRentedAtDate(string developerName, DateTime date)
+        {
+          return (from log in repo.ReadAll()
+                  where log.DateOfRent == date && log.Game.Developer.Name == developerName select log).Count();
         }
 
 

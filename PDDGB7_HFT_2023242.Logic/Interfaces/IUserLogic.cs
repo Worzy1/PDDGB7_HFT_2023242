@@ -15,7 +15,7 @@ namespace PDDGB7_HFT_2023242.Logic.Interfaces
         IQueryable<User> ReadAll();
         void Update(User item);
         public double GetAllUsersAverageNumberOfRents();
-        public string GetMostRentedDeveloper(string refcode);
+        public string GetMostLikedDeveloper(string refcode);
 
 
 

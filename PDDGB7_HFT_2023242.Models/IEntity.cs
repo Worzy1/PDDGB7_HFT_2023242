@@ -10,8 +10,7 @@ namespace PDDGB7_HFT_2023242.Models
 {
     public interface IEntity<TId>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
         TId Id { get; set; }
     }
 }
