@@ -1,5 +1,6 @@
 ﻿using PDDGB7_HFT_2023242.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Channels;
 
@@ -55,6 +56,71 @@ namespace PDDGB7_HFT_2023242
 
 
             }
+        }
+        static void List(string entityType)
+        {
+            List<Entity> entities;
+            switch (entityType)
+            {
+                case "Developer":
+                    entities = rest.Get<Developer>("Developer").ToList<Entity>();
+                    break;
+                case "Game":
+                    entities = rest.Get<Game>("Game").ToList<Entity>();
+                    break;
+                case "User":
+                    entities = rest.Get<User>("User").ToList<Entity>();
+                    break;
+                default:
+                    entities = rest.Get<RentLog>("RentLog").ToList<Entity>();
+                    break;
+            }
+            foreach (var item in entities)
+                Console.WriteLine(item);
+            Console.ReadLine();
+        }
+        static void Update(string entityType)
+        {
+            Console.Write($"Enter {entityType}'s id to update: ");
+            Entity entity;
+            switch (entityType)
+            {
+                case "Developer":
+                    entity = rest.Get<Developer>(int.Parse(Console.ReadLine()), "Developer");
+                    Console.Write($"New name [old: {(entity as Developer).Name}]: ");
+                    (entity as Developer).Name = Console.ReadLine();
+                    rest.Put(entity, "Developer");
+                    break;
+                case "Game":
+                    entity = rest.Get<Game>(int.Parse(Console.ReadLine()), "Game");
+                    Console.Write($"New title [old: {(entity as Game).Title}]: ");
+                    (entity as Game).Title = Console.ReadLine();
+                    Console.Write($"New developer id [old: {(entity as Game).DeveloperId}]: ");
+                    (entity as Game).DeveloperId = int.Parse(Console.ReadLine());
+                    (entity as Game).YearOfRelease = DateTime.Parse(Console.ReadLine());
+                    rest.Put(entity, "Game");
+                    break;
+                case "User":
+                    entity = rest.Get<User>(int.Parse(Console.ReadLine()), "User");
+                    Console.Write($"New name [old: {(entity as User).Name}]: ");
+                    (entity as User).Name = Console.ReadLine();
+                    Console.Write($"New refcode[old: {(entity as User).RefCode}]: ");
+                    (entity as User).RefCode = Console.ReadLine();
+                    rest.Put(entity, "User");
+                    break;
+                default:
+                    entity = rest.Get<RentLog>(int.Parse(Console.ReadLine()), "RentLogg");
+                    Console.Write($"New date of renting [old: {(entity as RentLog).DateOfRent.ToString().Split(" ")[0]}]: ");
+                    (entity as RentLog).DateOfRent = DateTime.Parse(Console.ReadLine());
+                    Console.Write($"New user id [old: {(entity as RentLog).UserId}]: ");
+                    (entity as RentLog).UserId = int.Parse(Console.ReadLine());
+                    Console.Write($"New game id [old: {(entity as RentLog).GameId}]: ");
+                    (entity as RentLog).GameId = int.Parse(Console.ReadLine());
+                    rest.Put(entity, "RentLog");
+                    break;
+            }
+            rest.Put(entity, entityType);
+
         }
 
 
