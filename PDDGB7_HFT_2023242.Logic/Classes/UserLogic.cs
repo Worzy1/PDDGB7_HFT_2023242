@@ -4,6 +4,7 @@ using PDDGB7_HFT_2023242.Models;
 using PDDGB7_HFT_2023242.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,12 +56,35 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
 
         public double GetAllUsersAverageNumberOfRents()
         {
-            throw new NotImplementedException();
+            return repo.ReadAll().Average(t => t.RentLogs.Count());
         }
 
         public string GetMostLikedDeveloper(string refcode)
         {
-            throw new NotImplementedException();
+            string developer;
+            try
+            {
+                developer = repo.Read(FindId(refcode)).RentLogs
+                    .GroupBy(log => log.Game.Developer)
+                    .GroupBy(g => g.Count())
+                    .OrderByDescending(g => g.Key)
+                    .First()
+                    .Select(log => log.Key.Name)
+                    .FirstOrDefault();
+            }
+            catch
+            {
+                developer = "has not played any books yet";
+            }
+            return developer;
+        }
+
+        public int FindId(string refcode)
+        {
+            foreach(User user in repo.ReadAll())
+                if (user.RefCode ==refcode)
+                    return user.Id;
+            throw new ArgumentException(refcode);
         }
 
         
