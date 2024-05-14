@@ -34,7 +34,19 @@ namespace PDDGB7_HFT_2023242.Models
             YearOfRelease = DateTime.Parse(split[3].Replace('*','.'));
         }
 
-     
+        public override string ToString()
+        {
+            return Id + ": " + Title + ", " + Developer.Name;
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Game))
+                return false;
+            Game game = (obj as Game);
+            return Id == game.Id && DeveloperId == game.DeveloperId && Title == game.Title && YearOfRelease == game.YearOfRelease;
+        }
+
+
 
     }
 }

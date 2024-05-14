@@ -1,4 +1,5 @@
-﻿using PDDGB7_HFT_2023242.Models;
+﻿using ConsoleTools;
+using PDDGB7_HFT_2023242.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,19 +161,81 @@ namespace PDDGB7_HFT_2023242
             Console.WriteLine($"The most played game during the busiest year is: {rest.GetTheBusiestYearsMostPlayedGame()}");
             Console.ReadLine();
         }
+        static void NumberOfGamesByDeveloper()
+        {
+            Console.WriteLine("Developer's name: ");
+            string developerName = Console.ReadLine();
+            Console.WriteLine($"The number of available games by {developerName} is: {rest.NumberOfGamesByDeveloper(developerName)}");
+            Console.ReadLine();
+        }
+        static void TheNumberOfDevelopersGamesRentedAtDate()
+        {
+            Console.WriteLine("Developer's name: ");
+            string developerName = Console.ReadLine();
+            Console.WriteLine("Date: ");
+            string date = Console.ReadLine();
+            try
+            {
+                Console.WriteLine($"The number of {developerName}'s games rented on {date} is: {rest.NumberOfDevelopersGamesRentedAtDate(developerName, date)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            Console.ReadLine();
+        }
 
 
         static void Main(string[] args)
         {
-            //GamesDbContext ctx = new GamesDbContext();
-            //ctx.Developers.ToList().ForEach(game => Console.WriteLine(game.Name));
+        
+            rest = new RestService("http://localhost:21829/");
+            var querySubMenu = new ConsoleMenu(args, level: 1)
+                .Add("Average number of rents", () => AllUsersAvgNumOfRents())
+                .Add("Student's favourite developer", () => FavouriteDeveloper())
+                .Add("Most played game", () => TheMostPlayedGame())
+                .Add("Most played game during busiest year", () => TheMostPlayedGameDuringBusiestYear())
+                .Add("Number of available games by developer", () => NumberOfGamesByDeveloper())
+                .Add("Number of developer's game rented on day", () => TheNumberOfDevelopersGamesRentedAtDate());
+
+            var developerSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Developer"))
+                .Add("Create", () => Create("Developer"))
+                .Add("Delete", () => Delete("Developer"))
+                .Add("Update", () => Update("Developer"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var gameSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Game"))
+                .Add("Create", () => Create("Game"))
+                .Add("Delete", () => Delete("Game"))
+                .Add("Update", () => Update("Game"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var rentLogSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("RentLog"))
+                .Add("Create", () => Create("RentLog"))
+                .Add("Delete", () => Delete("RentLog"))
+                .Add("Update", () => Update("RentLog"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var userSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("User"))
+                .Add("Create", () => Create("User"))
+                .Add("Delete", () => Delete("User"))
+                .Add("Update", () => Update("User"))
+                .Add("Exit", ConsoleMenu.Close);
 
 
+            var menu = new ConsoleMenu(args, level: 0)
+                .Add("Users", () => userSubMenu.Show())
+                .Add("Developers", () => developerSubMenu.Show())
+                .Add("Games", () => gameSubMenu.Show())
+                .Add("RentLogs", () => rentLogSubMenu.Show())
+                .Add("Query menu", () => querySubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
 
-
-
-
-            Console.WriteLine("Hello World!");
+            menu.Show();
         }
     }
 }

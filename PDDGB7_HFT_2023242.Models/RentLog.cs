@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,18 @@ namespace PDDGB7_HFT_2023242.Models
             UserId = int.Parse(split[1]);
             GameId = int.Parse(split[2]);
             DateOfRent = DateTime.Parse(split[3].Replace('*','.'));
+        }
+
+        public override string ToString()
+        {
+            return DateOfRent.ToString().Split(" ")[0] + " " + Game.Title + " was rented";
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is RentLog))
+                return false;
+            RentLog log = obj as RentLog;
+            return Id == log.Id && UserId == log.UserId && GameId == log.GameId && DateOfRent == log.DateOfRent;
         }
 
     }

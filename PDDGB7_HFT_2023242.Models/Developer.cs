@@ -29,6 +29,18 @@ namespace PDDGB7_HFT_2023242.Models
             this.Name = temp[1];
         }
 
+        public override string ToString()
+        {
+            return Id + ": " + Name;
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Developer))
+                return false;
+            Developer developer = obj as Developer;
+            return Id == developer.Id && Name == developer.Name;
+        }
+
 
     }
 }

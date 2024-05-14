@@ -32,6 +32,18 @@ namespace PDDGB7_HFT_2023242.Models
             Name = split[1];
             RefCode = split[2]; 
         }
+        public override string ToString()
+        {
+            return $"{Id}: {Name} ({RefCode})";
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is User))
+                return false;
+            User user = obj as User;
+            return Id == user.Id && Name == user.Name && RefCode == user.RefCode;
 
-     }
+        }
+
+    }
 }
