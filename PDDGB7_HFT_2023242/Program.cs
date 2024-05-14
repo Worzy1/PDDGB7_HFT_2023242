@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using NUnit.Framework.Constraints;
-using PDDGB7_HFT_2023242.Logic.Classes;
-using PDDGB7_HFT_2023242.Models;
-using PDDGB7_HFT_2023242.Repository.Data;
-using PDDGB7_HFT_2023242.Repository.Repositories;
+﻿using PDDGB7_HFT_2023242.Models;
 using System;
 using System.Linq;
 using System.Threading.Channels;
@@ -50,11 +45,9 @@ namespace PDDGB7_HFT_2023242
 
         static void Main(string[] args)
         {
-            //GamesDbContext ctx=new GamesDbContext();
+            //GamesDbContext ctx = new GamesDbContext();
             //ctx.Developers.ToList().ForEach(game => Console.WriteLine(game.Name));
-            //var ctx = new GamesDbContext();
-            //var repo = new GameRepository(ctx);
-            //var logic = new GameLogic(repo);
+
 
 
 

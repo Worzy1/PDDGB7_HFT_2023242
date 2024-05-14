@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace PDDGB7_HFT_2023242.Models
     {
         public override int Id { get; set; }
         public virtual Developer Developer { get; set; }
+        [ForeignKey(nameof(Developer))]
         public int DeveloperId { get; set; }
         [Required]
         [StringLength(100)]

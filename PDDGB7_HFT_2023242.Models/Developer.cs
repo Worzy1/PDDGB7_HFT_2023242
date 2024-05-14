@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PDDGB7_HFT_2023242.Models
@@ -13,6 +15,8 @@ namespace PDDGB7_HFT_2023242.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+        [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Game> Games { get; set; }
         public Developer()
         {

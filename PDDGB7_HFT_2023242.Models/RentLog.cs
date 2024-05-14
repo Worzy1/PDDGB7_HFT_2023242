@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,10 @@ namespace PDDGB7_HFT_2023242.Models
     {
         public override int Id { get; set; }
         public virtual User User { get; set; }
+        [ForeignKey(nameof(User))]
         public int UserId { get; set; }
         public virtual Game Game { get; set; }
+        [ForeignKey(nameof(Game))]
         public int GameId { get; set; }
         public DateTime DateOfRent { get; set; }
         public RentLog()
