@@ -37,7 +37,7 @@ namespace PDDGB7_HFT_2023242.Endpoint.Controllers
         }
 
         [HttpPut]
-        public void Put([FromBody] User item)
+        public void Update([FromBody] User item)
         {
             this.logic.Update(item);
         }

@@ -55,7 +55,7 @@ namespace PDDGB7_HFT_2023242.Logic.Classes
 
         public void Update(User item)
         {
-             repo.Create(item);
+             repo.Update(item);
         }
 
         public double GetAllUsersAverageNumberOfRents()

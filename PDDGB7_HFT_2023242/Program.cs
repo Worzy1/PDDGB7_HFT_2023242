@@ -98,6 +98,7 @@ namespace PDDGB7_HFT_2023242
                     (entity as Game).Title = Console.ReadLine();
                     Console.Write($"New developer id [old: {(entity as Game).DeveloperId}]: ");
                     (entity as Game).DeveloperId = int.Parse(Console.ReadLine());
+                    Console.Write($"New release date [old:{(entity as Game).YearOfRelease}]:");
                     (entity as Game).YearOfRelease = DateTime.Parse(Console.ReadLine());
                     rest.Put(entity, "Game");
                     break;
@@ -110,7 +111,7 @@ namespace PDDGB7_HFT_2023242
                     rest.Put(entity, "User");
                     break;
                 default:
-                    entity = rest.Get<RentLog>(int.Parse(Console.ReadLine()), "RentLogg");
+                    entity = rest.Get<RentLog>(int.Parse(Console.ReadLine()), "RentLog");
                     Console.Write($"New date of renting [old: {(entity as RentLog).DateOfRent.ToString().Split(" ")[0]}]: ");
                     (entity as RentLog).DateOfRent = DateTime.Parse(Console.ReadLine());
                     Console.Write($"New user id [old: {(entity as RentLog).UserId}]: ");
