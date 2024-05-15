@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PDDGB7_HFT_2023242.Models
@@ -17,12 +18,13 @@ namespace PDDGB7_HFT_2023242.Models
         [Required]
         [StringLength(100)]
         public string Title { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RentLog> RentLogs { get; set; }
         public DateTime YearOfRelease { get; set; }
 
         public Game()
         {
-            RentLogs = new List<RentLog>();
+            RentLogs = new HashSet<RentLog>();
         }
 
         public Game(string line)

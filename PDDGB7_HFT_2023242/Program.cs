@@ -143,9 +143,9 @@ namespace PDDGB7_HFT_2023242
             string refcode = Console.ReadLine();
             try
             {
-                Console.WriteLine(rest.GetFavouriteDeveloper(refcode)+$"is {refcode}'s favourite developer");
+                Console.WriteLine(rest.GetFavouriteDeveloper(refcode) + $"is {refcode}'s favourite developer");
             }
-            catch(Exception  ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -188,7 +188,7 @@ namespace PDDGB7_HFT_2023242
 
         static void Main(string[] args)
         {
-        
+
             rest = new RestService("http://localhost:21829/");
             var querySubMenu = new ConsoleMenu(args, level: 1)
                 .Add("Average number of rents", () => AllUsersAvgNumOfRents())
@@ -196,7 +196,8 @@ namespace PDDGB7_HFT_2023242
                 .Add("Most played game", () => TheMostPlayedGame())
                 .Add("Most played game during busiest year", () => TheMostPlayedGameDuringBusiestYear())
                 .Add("Number of available games by developer", () => NumberOfGamesByDeveloper())
-                .Add("Number of developer's game rented on day", () => TheNumberOfDevelopersGamesRentedAtDate());
+                .Add("Number of developer's game rented on day", () => TheNumberOfDevelopersGamesRentedAtDate())
+                .Add("Exit", ConsoleMenu.Close);
 
             var developerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Developer"))
